@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import { Button } from 'react-bootstrap';
+import router from 'next/router';
 import GameCard from '../../components/game/GameCard';
 import { getGames } from '../../utils/data/gameData';
 
@@ -11,6 +13,13 @@ function Home() {
 
   return (
     <article className="games">
+      <Button
+        onClick={() => {
+          router.push('/games/new');
+        }}
+      >
+        Register New Game
+      </Button>
       <h1>Games</h1>
       {games.map((game) => (
         <section key={`game--${game.id}`} className="game">
