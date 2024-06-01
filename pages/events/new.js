@@ -1,4 +1,4 @@
-import EventForm from '../../components/event/EventFom';
+import EventForm from '../../components/event/EventForm';
 import { useAuth } from '../../utils/context/authContext';
 
 const NewEvent = () => {

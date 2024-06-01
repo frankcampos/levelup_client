@@ -1,12 +1,15 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Card } from 'react-bootstrap';
+import { Button, Card } from 'react-bootstrap';
+import router from 'next/router';
 
 const EventCard = ({
   description,
   date,
   time,
   organizer,
+  id,
+  game,
 }) => (
   <Card
     style={{
@@ -20,6 +23,18 @@ const EventCard = ({
       <Card.Text>description: {description}</Card.Text>
     </Card.Body>
     <Card.Footer className="text-muted">Organizer: {organizer}</Card.Footer>
+    <Button onClick={() => {
+      router.push({
+        pathname: '/events/edit',
+        query: {
+          event: JSON.stringify({
+            description, date, time, organizer, id, game,
+          }),
+        },
+      });
+    }}
+    >Edit Event
+    </Button>
   </Card>
 );
 
@@ -28,6 +43,8 @@ EventCard.propTypes = {
   date: PropTypes.string.isRequired,
   time: PropTypes.string.isRequired,
   organizer: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+  game: PropTypes.number.isRequired,
 };
 
 export default EventCard;
