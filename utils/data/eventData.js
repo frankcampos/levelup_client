@@ -35,5 +35,19 @@ const editEvent = (event) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const deleteEvent = (eventId) => new Promise((resolve, reject) => {
+  fetch(`${clientCredentials.databaseURL}/events/${eventId}`, {
+    method: 'DELETE',
+  })
+    .then((response) => response)
+    .then(resolve)
+    .catch(reject);
+});
+
 // eslint-disable-next-line import/prefer-default-export
-export { getEvents, createEvent, editEvent };
+export {
+  getEvents,
+  createEvent,
+  editEvent,
+  deleteEvent,
+};
